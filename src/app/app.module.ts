@@ -1,3 +1,10 @@
+  
+// <!-- * Title: app.module.ts
+// * Author: Professor Krasso
+// * Date: 19 September 2020
+// * Modified: Joann Saeou
+// * Description: app module ts   -->
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule} from '@angular/router';

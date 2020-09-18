@@ -1,3 +1,10 @@
+  
+// <!-- * Title: home.component.ts
+// * Author: Professor Krasso
+// * Date: 18 September 2020
+// * Modified: Joann Saeou
+// * Description: Home component ts file  -->
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({

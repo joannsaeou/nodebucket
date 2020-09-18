@@ -1,3 +1,10 @@
+/*   
+<!-- * Title: base-layout.component.ts
+* Author: Professor Krasso
+* Date: 19 September 2020
+* Modified: Joann Saeou
+* Description: base layout ts component --> */
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
