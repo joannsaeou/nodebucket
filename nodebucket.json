@@ -1,0 +1,59 @@
+[{
+    "empId": "1007",
+    "firstName": "amy",
+    "lastName": "Li",
+    "todo": [{"text": "updated task"}, {"text": "delete task"}, {"text": "add new task"}],
+    "done": [{"text": "completed task"}]
+    
+},
+{
+    "empId": "1008",
+    "firstName": "Lara",
+    "lastName": "Smith",
+    "todo": [{"text": "updated task"}, {"text": "delete task"}, {"text": "add new task"}],
+    "done": [{"text": "completed task"}]
+    
+
+},
+{
+    "empId": "1009",
+    "firstName": "Tony",
+    "lastName": "Kim",
+    "todo": [{"text": "updated task"}, {"text": "delete task"}, {"text": "add new task"}],
+    "done": [{"text": "completed task"}]
+    
+
+},
+{
+    "empId": "1010",
+    "firstName": "Frenchy",
+    "lastName": "Swiss",
+    "todo": [{"text": "updated task"}, {"text": "delete task"}, {"text": "add new task"}],
+    "done": [{"text": "completed task"}]
+    
+
+},
+{
+    "empId": "1011",
+    "firstName": "Dillion",
+    "lastName": "Dee",
+    "todo": [{"text": "updated task"}, {"text": "delete task"}, {"text": "add new task"}],
+    "done": [{"text": "completed task"}]
+    
+
+},
+{
+    "empId": "1012",
+    "firstName": "Burmy",
+    "lastName": "Polis",
+    "todo": [{"text": "updated task"}, {"text": "delete task"}, {"text": "add new task"}],
+    "done": [{"text": "completed task"}]
+    
+
+}]
+
+
+
+
+
+
