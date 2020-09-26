@@ -1,4 +1,4 @@
-  
+
 // <!-- * Title: app.component.ts
 // * Author: Professor Krasso
 // * Date: 19 September 2020
