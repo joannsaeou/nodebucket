@@ -1,3 +1,13 @@
+/*   
+<!-- 
+* Title: app.s
+* Author: Professor Krasso
+* Date: 29 September 2020
+* Modified: Joann Saeou
+* Description: this is the app.js where mongodb connections exists here --> */
+
+
+
 /**
  * Require statements
  */
@@ -7,6 +17,9 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
+const Employee = require('./models/employee');  // this will get  the employee model from the models directory 
+const EmployeeApi = require('./routes/employee-api'); // this will import the employee API and sets up the routes for the employee objects 
+
 
 /**
  * App configurations
@@ -46,61 +59,18 @@ mongoose.connect(conn, {
 
 
 
-// mongoose.connect(
-//   'mongodb+srv://nodebucket_employee:5ky8ZoSc7meskZP5@buwebdev-cluster-1.2eedp.mongodb.net/nodebucket?retryWrites=true&w=majority',
-//   {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     useFindAndModify: false,
-//     useCreateIndex: true,
-//     user: 'nodebucket_employee', // IMPORTANT TO HAVE IT HERE AND NOT IN CONNECTION STRING
-//     pass: '5ky8ZoSc7meskZP5', // IMPORTANT TO HAVE IT HERE AND NOT IN CONNECTION STRING
-//     dbName: 'nodebucket', // IMPORTANT TO HAVE IT HERE AND NOT IN CONNECTION STRING
-//   },
-//   err => { throw err; },
-// );
+
 
 /**
  * API(s)
  */
 
 
- app.get('/api/employee/:empId', async(req, res) => {
-
- try {
-   /* use the mongoose employee model to query mongodb atlas by employee Id */
-   employee.findOne({'empId': req.params.empId}, function(err, employee){
-
-    /* if there is a db level error , handle by returning a server 500 error */
-    if(err) {
-      console.log(err);
-      res.status(500).send({
-        'message': 'Internal server error'
-      })
-
-    } else {
-
-      /* if there is no db level errors, return the employee object */
-      console.log(employee);
-      res.json(employee);
-    }
-   })
-
- } catch (e) {
-
-   /* catch any potential errors that wasn't prepare for */
-   console.log(e);
-   res.status(500).send({
-    'message': 'Internal server error!'
- })
-}
- },
-
-
+ app.use('/api/employees', EmployeeApi);   // this is the URL  localhost:3000/api/employees   
 
 /**
  * Create and start server
  */
 http.createServer(app).listen(port, function() {
   console.log(`Application started and listening on port: ${port}`)
-}));  // end http create server function
+});  // end http create server function
