@@ -21,6 +21,7 @@ const Employee = require('./models/employee');  // this will get  the employee m
 const EmployeeApi = require('./routes/employee-api'); // this will import the employee API and sets up the routes for the employee objects 
 
 
+
 /**
  * App configurations
  */
@@ -41,7 +42,7 @@ const port = 3000; // server port
 
 // TODO: This line will need to be replaced with your actual database connection string
 
-const conn = 'mongodb+srv://nodebucket450:q1770FqBF97M7UrV@buwebdev-cluster-1.2eedp.mongodb.net/nodebucket?retryWrites=true&w=majority';
+const conn = 'mongodb+srv://nodebucket450:cPCi8i5HNULUPikc@buwebdev-cluster-1.2eedp.mongodb.net/nodebucket?retryWrites=true&w=majority';
 
 /**
  * Database connection
@@ -66,7 +67,7 @@ mongoose.connect(conn, {
  */
 
 
- app.use('/api/employees', EmployeeApi);   // this is the URL  localhost:3000/api/employees   
+ app.use('/api/employee', EmployeeApi);   // this is the URL  localhost:3000/api/employees   
 
 /**
  * Create and start server
