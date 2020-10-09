@@ -27,6 +27,7 @@
 .footer {
   bottom: 0;
   position: absolute;
+  position: bottom;
   width: 100%;
 }
 
@@ -47,15 +48,15 @@
 
 .custom404  {
   size: 45px; 
-  height: 300px;
-  width: 360px;
+  height: 500px;
+  width: 460px;
 
 }
 
 
 .customimage { 
-   height: 300px;
-   width: 260px;
+   height: 500px;
+   width: 460px;
 }
 
 

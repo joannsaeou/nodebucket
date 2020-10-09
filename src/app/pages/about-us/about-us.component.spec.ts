@@ -1,3 +1,11 @@
+/* <!-- * Title:about-us.component.spec.ts
+// * Author: Professor Krasso
+// * Date: 08 October 2020
+// * Modified: Joann Saeou
+// * Description: about us  component spec typescript   page --> */
+
+
+
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AboutUsComponent } from './about-us.component';
