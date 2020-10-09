@@ -1,4 +1,10 @@
-class ErrorResponse {
+// <!-- * Title: base-response.js
+// * Author: Professor Krasso
+// * Date: 8 October 2020
+// * Modified: Joann Saeou
+// * Description: file for error response   -->
+
+class BaseResponse {
     constructor(httpCode, message, data) {
         this.httpCode = httpCode;
         this.message = message;
@@ -15,4 +21,4 @@ class ErrorResponse {
 }
 
 
-module.exports = ErrorResponse;
+module.exports = BaseResponse;

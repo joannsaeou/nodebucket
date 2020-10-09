@@ -44,3 +44,18 @@
 .bu-link:hover {
   text-decoration: underline;
 }
+
+.custom404  {
+  size: 45px; 
+  height: 300px;
+  width: 360px;
+
+}
+
+
+.customimage { 
+   height: 300px;
+   width: 260px;
+}
+
+

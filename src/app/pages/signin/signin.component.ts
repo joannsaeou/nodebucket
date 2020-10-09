@@ -42,4 +42,17 @@ export class SigninComponent implements OnInit {
     });
   }
 
+  logout() {
+    const empId = this.form.controls.empId.value;
+
+    this.http.get('/api/employee/' + empId).subscribe(res => {
+      if (res) {
+        this.cookieService.set('session_user', empId, 1);
+        this.router.navigate(['/']);
+      } else {
+        this.error = 'logging out is invalid';
+      }
+    });
+  }
+
 }

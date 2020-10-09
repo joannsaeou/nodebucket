@@ -51,7 +51,9 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
 
 
 const materialModules = [
@@ -92,7 +94,9 @@ const materialModules = [
     BaseLayoutComponent,
     AuthLayoutComponent,
     HomeComponent,
-    SigninComponent
+    SigninComponent,
+    NotFoundComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
@@ -107,7 +111,9 @@ const materialModules = [
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatDividerModule,
+    DragDropModule
   ],
   providers: [
     CookieService

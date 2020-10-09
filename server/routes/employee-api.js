@@ -20,7 +20,7 @@
 const express = require('express');
 const Employee = require('../models/employee');
 const BaseResponse = require('../services/base-response');
-const ErrorResponse = require('../services/error.response');
+const ErrorResponse = require('../services/error-response');
 
 
 
@@ -83,7 +83,8 @@ class EmployeeResponse {
 
     /*
     *
-    * findAllTasks here 
+    * API: findAllTasks here 
+    * (this will returns a list of JSON task objects)
     * */
 
 
@@ -225,7 +226,7 @@ class EmployeeResponse {
 
 
 
-router.post('/api/employee/:empId/tasks', async(req, res) => {
+router.post('/:empId/tasks', async(req, res) => {
 
     try {
         Employee.findOne({'empId': req.params.empId}, 'empId todo done', function(err, employee) {
@@ -233,9 +234,9 @@ router.post('/api/employee/:empId/tasks', async(req, res) => {
             if (err) {
                 console.log(err);
 
-                const createTaskCatchErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+                const CreateTaskCatchErrorResponse = new ErrorResponse('500', 'Internal server error', err);
 
-                res.status(500).send(createTaskCatchErrorResponse.toObject());
+                res.status(500).send(CreateTaskCatchErrorResponse.toObject());
              } else { 
 
                  console.log(employee);
@@ -254,17 +255,17 @@ router.post('/api/employee/:empId/tasks', async(req, res) => {
                     if (err) {
                         console.log(err);
 
-                        const createTaskOnSaveMongoDbErrorReponse = new ErrorResponse('500', 'Internal server error', err);
+                        const CreateTaskOnSaveMongoDbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
 
-                        res.status(500).send(createTaskOnSaveMongoDbErrorReponse.toObject());
+                        res.status(500).send(CreateTaskOnSaveMongoDbErrorResponse.toObject());
 
                     } else {
 
                         console.log(updatedEmployee);
 
-                        const createTaskOnSaveMongoDbErrorReponse = new BaseResponse('200', 'Successful entry', updatedEmployee);
+                        const CreateTaskResponse = new BaseResponse('200', 'Successful entry', updatedEmployee);
 
-                        res.json(createTaskOnSaveMongoDbErrorReponse.toObject());
+                        res.json(CreateTaskResponse.toObject());
                     }
 
                      })
@@ -275,9 +276,9 @@ router.post('/api/employee/:empId/tasks', async(req, res) => {
     } catch (e) {
         console.log(e);
 
-        const CreateTaskCatchErrorResponse = new ErrorReponse('500', 'Internal Server Error', e.message);
+        const createTaskCatchErrorResponse = new ErrorReponse('500', 'Internal Server Error', e.message);
 
-        res.status(500).send(CreateTaskCatchErrorResponse.toObject());
+        res.status(500).send(createTaskCatchErrorResponse.toObject());
     }
 })
 
@@ -323,9 +324,9 @@ router.post('/api/employee/:empId/tasks', async(req, res) => {
                             
                             console.log(err);
 
-                            const updateTaskOnSaveMongoDbErrorReponse = new ErrorResponse('500', 'interna server error', err);
+                            const updateTaskOnSaveMongoDbErrorResponse = new ErrorResponse('500', 'internal server error', err);
 
-                            res.status(500).send(updateTaskOnSaveMongoDbErrorReponse.toObject());
+                            res.status(500).send(updateTaskOnSaveMongoDbErrorResponse.toObject());
                         } else {
                             console.log(updatedEmployee);
 
@@ -341,9 +342,9 @@ router.post('/api/employee/:empId/tasks', async(req, res) => {
         } catch (e) {
             console.log(e);
 
-            const updateTaskCatchErrorReponse = new ErrorResponse('500', 'Internal server error', e.message);
+            const updateTaskCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
 
-            res.status(500).send(updateTaskCatchErrorReponse.toObject());
+            res.status(500).send(updateTaskCatchErrorResponse.toObject());
         }
     })
 
