@@ -15,7 +15,7 @@ import { Employee } from '../../shared/employee.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateTaskDialogComponent } from 'src/app/shared/create-task-dialog/create-task-dialog.component';
 
- 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -97,7 +97,8 @@ export class HomeComponent implements OnInit {
     })
 
   }
- 
+
+  
   // this is the code that will open up the dialog
   openCreateTaskDialog() {
 
