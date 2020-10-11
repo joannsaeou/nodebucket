@@ -25,9 +25,9 @@
 }
 
 .footer {
-  bottom: 0;
-  position: absolute;
-  position: bottom;
+  bottom: auto;
+  /* position: absolute; */
+  position: bottom ;
   width: 100%;
 }
 

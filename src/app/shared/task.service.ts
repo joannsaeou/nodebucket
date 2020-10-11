@@ -1,4 +1,4 @@
-/* <!-- * Title:task.service.ts  
+/* <!-- * Title:task.service.ts
 // * Author: Professor Krasso
 // * Date: 08 October 2020
 // * Modified: Joann Saeou
@@ -20,10 +20,10 @@ import { Item } from './item.interface';
 })
 export class TaskService {
 
- 
+
 
   constructor(private http: HttpClient) {
-   }
+    }
 
   /**findAllTask (here)
    * this became http://localhost:3000/api/1007/tasks
@@ -42,13 +42,23 @@ updateTask(empId: string, todo: Item[], done: Item[]): Observable<any> {
   return this.http.put('/api/employee/tasks' + empId + '/tasks', {
     todo,
     done
-  })
+  });
 }
 
 
   // createTask (here)
 
+  createTask(empId: string, task: string): Observable<any> {
+    return this.http.post('/api/employee/' + empId + '/tasks', {    // this is a {} body that will pass over
+      text: task
+    });
+  }
+
 
   // deleteTask (here)
+
+  deleteTask(empId: string, taskId: string): Observable<any> {
+    return this.http.delete('/api/employee/' + empId + '/tasks/' + taskId );
+  }
 
 }

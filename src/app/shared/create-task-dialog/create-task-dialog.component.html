@@ -1,0 +1,23 @@
+ <!-- * Title: app.routing.ts
+    // * Author: Professor Krasso
+    // * Date: 19 September 2020
+    // * Modified: Joann Saeou
+    // * Description: app routing ts  -->
+    
+
+<h3 mat-dialog-title>Add new task here</h3>
+
+
+<mat-dialog-content>
+
+    <mat-form-field>
+        <input style="width: 200px;" placeholder="Enter a task name here...." matInput formControlName="text" (keydown.enter)="createTask()"/>
+    </mat-form-field>
+</mat-dialog-content>
+
+ <!-- mat dialog actions  button to  cancel and createTask -->
+<mat-dialog-actions align="end">
+    <button mat-button (click)="cancel()">Cancel</button>
+    <button mat-button (click)="createTask()">Create task</button>
+
+</mat-dialog-actions>

@@ -54,41 +54,13 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { CreateTaskDialogComponent } from './shared/create-task-dialog/create-task-dialog.component';
+import { MatDialogModule, MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 
-const materialModules = [
-  CdkTreeModule,
-  MatAutocompleteModule,
-  MatButtonModule,
-  MatCardModule,
-  MatDividerModule,
-  MatExpansionModule,
-  MatIconModule,
-  MatInputModule,
-  MatMenuModule,
-  MatProgressSpinnerModule,
-  MatPaginatorModule,
-  MatRippleModule,
-  MatSelectModule,
-  MatSidenavModule,
-  MatSnackBarModule,
-  MatSortModule,
-  MatTableModule,
-  MatTabsModule,
-  MatToolbarModule,
-  MatFormFieldModule,
-  MatTreeModule,
-  OverlayModule,
-  PortalModule,
-  MatBadgeModule,
-  MatGridListModule,
-  MatRadioModule,
-  MatDatepickerModule,
-  MatTooltipModule,
-  CUSTOM_ELEMENTS_SCHEMA
-];
 
 @NgModule({
+  // these are the file component that are created
   declarations: [
     AppComponent,
     BaseLayoutComponent,
@@ -96,7 +68,8 @@ const materialModules = [
     HomeComponent,
     SigninComponent,
     NotFoundComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    CreateTaskDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -113,8 +86,45 @@ const materialModules = [
     MatFormFieldModule,
     AppRoutingModule,
     MatDividerModule,
-    DragDropModule
+    DragDropModule,
+    MatDialogModule,
+    CdkTreeModule,
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatCardModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatInputModule,
+    MatMenuModule,
+    MatProgressSpinnerModule,
+    MatPaginatorModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatTreeModule,
+    OverlayModule,
+    PortalModule,
+    MatBadgeModule,
+    MatGridListModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatTooltipModule,
+    MatDialogModule,
+    MatMenuModule
+
+
   ],
+  entryComponents: [
+    CreateTaskDialogComponent
+  ],
+
   providers: [
     CookieService
   ],
