@@ -13,6 +13,7 @@ import { AuthGuard} from './auth.guard';
 import { AuthLayoutComponent } from '../shared/auth-layout/auth-layout.component';
 import { SigninComponent } from '../pages/signin/signin.component';
 import { NotFoundComponent } from '../pages/not-found/not-found.component';
+import { AboutUsComponent } from '../pages/about-us/about-us.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
         path: '',
         component: HomeComponent,
         canActivate: [AuthGuard]
+      },
+      {
+        path: 'pages/aboutus',
+        component: AboutUsComponent,
       }
     ]
   },
