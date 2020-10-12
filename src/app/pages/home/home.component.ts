@@ -90,21 +90,21 @@ export class HomeComponent implements OnInit {
     this.taskService.updateTask(empId, todo, done).subscribe(res => {
       this.employee = res.data;
     }, err => {
-      console.log(err)
+      console.log(err);
     }, () => {
       this.todo = this.employee.todo;
       this.done = this.employee.done;
-    })
+    });
 
   }
 
-  
+
   // this is the code that will open up the dialog
   openCreateTaskDialog() {
 
     const dialogRef = this.dialog.open(CreateTaskDialogComponent, {
       disableClose: true
-    })
+    });
 
 
     dialogRef.afterClosed().subscribe(data => {

@@ -17,6 +17,10 @@ import { CookieService } from 'ngx-cookie-service';
 export class BaseLayoutComponent implements OnInit {
 
 
+  // tslint:disable-next-line: no-inferrable-types
+  nbIcon: string = '../../../assets/nodebucketicon.png';
+
+
   year: number = Date.now();
 
   constructor(private cookieService: CookieService, private router: Router) {
