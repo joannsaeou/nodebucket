@@ -40,7 +40,11 @@ app.use('/', express.static(path.join(__dirname, '../dist/nodebucket')));
 
 const employee = require('./models/employee');
 
-const port = 3000; // server port
+const port = process.env.PORT || 3000; // server port
+
+
+
+
 
 // TODO: This line will need to be replaced with your actual database connection string
 
