@@ -126,7 +126,7 @@ export class HomeComponent implements OnInit {
 
   deleteTask(taskId: string) {
     if (taskId) {
-      console.log(`Task Item: ${taskId} was delete`);
+      console.log(`Task Item: ${taskId} was delete`); // must use backtick to make taskID delete work
 
       this.taskService.deleteTask(this.empId, taskId).subscribe(res => {
         this.employee = res.data;
@@ -137,7 +137,6 @@ export class HomeComponent implements OnInit {
         this.done = this.employee.done;
 
       });
-
     }
 
   }

@@ -47,7 +47,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: '**',        // will take someone to the not-found page
+    path: '**',        // will take user to the not-found page
     redirectTo: 'session/not-found'
   }
 ];

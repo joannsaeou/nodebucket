@@ -72,9 +72,12 @@
                         <button [matMenuTriggerFor]="todoOptions" class="task-options-menu" mat-icon-button>
                             <mat-icon>more_horiz</mat-icon>
                         </button>
+
+
+
                         <mat-menu #todoOptions="matMenu" x-position="before">
-                            <button (click)="deleteTask(item._id)" mat-menu-item>Delete</button>
-                        </mat-menu>
+                            <button (click)="deleteTask(item._id)" mat-menu-item>Remove</button>
+                        </mat-menu> 
                     </div>
 
                 </div>
@@ -130,10 +133,13 @@
                             </div>
 
                             <div fxFlex fxLayoutAlign="end">
-                                <button [matMenuTriggerFor]="todoOptions" class="task-options-menu" mat-icon-button>
+                                <!-- to change the button icon -->
+                                <button [matMenuTriggerFor]="doneOptions" class="task-options-menu" mat-icon-button>
                                     <mat-icon>more_horiz</mat-icon>
                                 </button>
-                                <mat-menu #todoOptions="matMenu" x-position="before">
+
+                                <!-- to delete task -->
+                                <mat-menu #doneOptions="matMenu" x-position="before">
                                     <button (click)="deleteTask(item._id)" mat-menu-item>Delete</button>
                                 </mat-menu>
                             </div>

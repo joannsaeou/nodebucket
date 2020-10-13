@@ -161,9 +161,9 @@ class EmployeeResponse {
 
                                 res.status(500).send(deleteTaskOnSaveMongoDbErrorResponse.toObject());
                             } else {
-                                console.log(updatedTodoItemEmployee);
+                                console.log(updateTodoItemEmployee);
 
-                                const deleteTodoItemSuccessResponse = new BaseResponse('200', 'Removed item from the todo list', updatedTodoItemEmployee);
+                                const deleteTodoItemSuccessResponse = new BaseResponse('200', 'Removed item from the todo list', updateTodoItemEmployee);
 
                                 res.json(deleteTodoItemSuccessResponse.toObject());
                             }
@@ -312,12 +312,14 @@ router.post('/:empId/tasks', async(req, res) => {
                     res.status(500).send(updateTaskMongoDbErrorReponse.toObject());
 
                 } else {
-                    console.log(employee);
 
-                    employee.set({
-                        todo: req.body.todo,
-                        done: req.body.done
-                    });
+                    console.log(employee);
+                    // employee object will be updated
+            
+                   employee.set({
+                     todo: req.body.todo,
+                     done: req.body.done
+                   });
 
                     employee.save(function(err, updateEmployee) {
                         if (err) {

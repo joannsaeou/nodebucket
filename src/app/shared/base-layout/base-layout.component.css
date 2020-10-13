@@ -6,13 +6,16 @@
 * Description: base layout css component --> */
 
 .logo {
-  margin-left: 75px;
+  margin-left: -85px;
+  justify-content: left;
+  float: left;
   font-size: 24px;
-  font-weight: lighter;;
+  font-weight: lighter;
+  background-image: transparent;
 }
 
 .navbar-container {
-  padding: 5px;
+  padding: 55px;
 }
 
 .navbar-link {
