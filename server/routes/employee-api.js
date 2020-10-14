@@ -334,7 +334,7 @@ router.post('/:empId/tasks', async(req, res) => {
 
                             const updateTaskOnSaveSuccessResponse = new BaseResponse('200', 'Update successful', updatedEmployee);
 
-                            res.json(updatedTaskOnSaveSuccessResponse.toObject());
+                            res.json(updateTaskOnSaveSuccessResponse.toObject());
                         }
 
                     })
