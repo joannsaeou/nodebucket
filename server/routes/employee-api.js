@@ -356,7 +356,12 @@ router.post('/:empId/tasks', async(req, res) => {
 
 
 
+    app.get('/api/:empId', checkUserAuth, findApp, renderView, sendJSON);
 
+    function checkUserAuth(req, res, next) {
+      if (req.session.user) return next();
+      return next(new NotAuthorizedError());
+    }
 
 
 
