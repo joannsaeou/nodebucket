@@ -16,8 +16,16 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 
-let itemSchema = new Schema({
-    text: { type: String }
-}); 
 
+/**
+ * ==============================================================================
+ * Item Schema 
+ * 
+ * ==============================================================================
+**/
+let itemSchema = new Schema({
+    text: {type: String}
+  });
+
+// schema to use for item model 
 module.exports = itemSchema;

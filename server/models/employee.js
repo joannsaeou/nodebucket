@@ -13,9 +13,12 @@ const Schema = mongoose.Schema;
 const Item = require('./item');  // a file item.js from the models folders  
 
 
-/*
-* employee schema , from SPRINT1
-*/
+/**
+ * ==============================================================================
+ * Employee Schema, created during Sprint 1
+ * 
+ * ==============================================================================
+**/
 const employeeSchema = new Schema({
     
     empId: {type: String, unique: true, dropDubs: true},
@@ -25,6 +28,6 @@ const employeeSchema = new Schema({
     done: [Item]    /* an array of item */   
  
 
-}, { collection: 'employee' });
+}, { collection: 'employees' });
 
 module.exports = mongoose.model('Employee', employeeSchema);

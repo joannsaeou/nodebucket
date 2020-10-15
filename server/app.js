@@ -17,6 +17,8 @@ const morgan = require('morgan');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
+
+
 const mongoose = require('mongoose');
 const Employee = require('./models/employee');  // this will get  the employee model from the models directory 
 const EmployeeApi = require('./routes/employee-api'); // this will import the employee API and sets up the routes for the employee objects 
@@ -38,7 +40,7 @@ app.use('/', express.static(path.join(__dirname, '../dist/nodebucket')));
  * Variables
  */
 
-const employee = require('./models/employee');
+
 
 const port = process.env.PORT || 3000; // server port
 
@@ -48,20 +50,25 @@ const port = process.env.PORT || 3000; // server port
 
 // TODO: This line will need to be replaced with your actual database connection string
 
-const conn = 'mongodb+srv://nodebucket450:ioXA2DYBoFJZdvTa@buwebdev-cluster-1.2eedp.mongodb.net/nodebucket?retryWrites=true&w=majority';
+const conn = 'mongodb+srv://nodebucket450:LlyvH7juPF4ILHvO@buwebdev-cluster-1.2eedp.mongodb.net/nodebucket?retryWrites=true&w=majority';
 
 /**
+ * ==============================================================================
  * Database connection
- */
+ * 
+ * ==============================================================================
+**/
 mongoose.connect(conn, {
   promiseLibrary: require('bluebird'),
   useUnifiedTopology: true,
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useCreateIndex: true
 }).then(() => {
   console.debug(`Connection to the database instance was successful`);
 }).catch(err => {
   console.log(`MongoDB Error: ${err.message}`)
-}); // end mongoose connection
+}); 
+// end mongoose connection
 
 
 
@@ -71,15 +78,24 @@ mongoose.connect(conn, {
 
 
 /**
- * API(s)
- */
+ * ==============================================================================
+ * API                      API                               API
+ * 
+ * ==============================================================================
+**/
 
 
  app.use('/api/employee', EmployeeApi);   // this is the URL  localhost:3000/api/employees   
 
+
+
+
 /**
- * Create and start server
- */
+ * ==============================================================================
+ * Create and Start server 
+ * 
+ * ==============================================================================
+**/
 http.createServer(app).listen(port, function() {
   console.log(`Application started and listening on port: ${port}`)
 });  // end http create server function

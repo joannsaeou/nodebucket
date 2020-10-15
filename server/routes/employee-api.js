@@ -4,7 +4,17 @@
 * Author: Professor Krasso
 * Date: 29 September 2020
 * Modified: Joann Saeou
-* Description: this is the api routing for employee --> */
+* Description: this is the api routing for employee 
+
+*  (Node.js API )
+* findEmployeeById
+ * FindAllTasks
+ * CreateTask
+ * UpdateTask
+ * DeleteTask
+*
+
+--> */
 
 
 
@@ -27,9 +37,13 @@ const ErrorResponse = require('../services/error-response');
 
 const router = express.Router();
 
-/**
- * API: findEmployeeByID (this will returns a JSON object of employee)
- */
+
+ /**
+ * ==============================================================================
+ *  API : FindEmployeeByID  here
+ *       (this will returns a JSON object of employee)
+ * ==============================================================================
+**/
 router.get('/:empId', async(req, res) => {
 
     try {
@@ -81,11 +95,15 @@ class EmployeeResponse {
 
 
 
-    /*
-    *
-    * API: findAllTasks here 
-    * (this will returns a list of JSON task objects)
-    * */
+  
+
+    /**
+ * ==============================================================================
+ *  API : FindAllTask here
+ *      (this will return a list of JSON task object)
+ * 
+ * ==============================================================================
+**/
 
 
     router.get('/:empId/tasks', async(req, res) => {
@@ -124,86 +142,112 @@ class EmployeeResponse {
            
         }
     } )  // tasks will be own separate file 
-/*
-    *
-    * DeleteTask here 
-    *
-    * */
 
 
-    router.delete('/:empId/tasks/:taskId', async(req, res) => {
-
-        try {
-
-            Employee.findOne({'empId': req.params.empId}, 'empId todo done', function(err, employee) {
-
-                if (err)  {
-                    console.log(err);
-
-                    const deleteTaskMondoDbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
-
-                    res.status(500).send(deleteTaskMondoDbErrorResponse.toObject());
-                } else {
-
-                    console.log(employee);
-
-                    const todoItem = employee.todo.find(item => item._id.toString() === req.params.taskId);
-                    const doneItem = employee.done.find(item => item._id.toString() === req.params.taskId);
 
 
-                    if (todoItem) {
-                        employee.todo.id(todoItem._id)
-                        employee.save(function(err, updateTodoItemEmployee) {
-                            if (err) {
-                                console.log(err);
-
-                                const deleteTaskOnSaveMongoDbErrorResponse = new ErrorResponse('500', 'internal server error', err);
-
-                                res.status(500).send(deleteTaskOnSaveMongoDbErrorResponse.toObject());
-                            } else {
-                                console.log(updateTodoItemEmployee);
-
-                                const deleteTodoItemSuccessResponse = new BaseResponse('200', 'Removed item from the todo list', updateTodoItemEmployee);
-
-                                res.json(deleteTodoItemSuccessResponse.toObject());
-                            }
-                        })
 
 
-                    } else if (doneItem) {
-                        employee.done.id(doneItem._id).remove();
-
-                        employee.save(function(err, updatedDoneItemEmployee) {
-                            if (err) {
-                                console.log(err);
-
-                                const deleteDoneItemSuccessResponse = new BaseResponse('200', 'Removed item from the done list', updatedDoneItemEmployee);
-
-                                res.json(updatedDoneItemEmployee.toObject());
-                            }
-                        })
-
-                    } else {
-                        console.log('Invalid task ID');
-
-                        const deleteTaskNotFoundResponse = new ErrorResponse('200', 'Unable to locate the requested task', null);
-
-                        res.status(500).send(deleteTaskNotFoundResponse.toObject());
-                    }
-                }
-            })
-
-        } catch (e) {
+/**
+ * ==============================================================================
+ *  API : DeleteTask here
+ * 
+ * ==============================================================================
+**/
 
 
-            console.log(e);
+   router.delete('/:empId/tasks/:taskId', async(req, res) => {
 
-            const deleteTaskCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
+    try {
+      //empid to done now returns only those fields.  otherwise employee would return firstname and lastname as well
+     Employee.findOne({'empId': req.params.empId}, function(err, employee) {
 
-            res.status(500).send(this.deleteTaskCatchErrorResponse.toObject());
+     if (err) {
+       console.log(err);
 
+       const DeleteTaskMongoDbErrorResponse= new ErrorResponse('500', 'internal error', err);
+
+       res.status(500).send(DeleteTaskMongoDbErrorResponse.toObject());
+  
+     } else {
+
+       console.log(employee);
+
+       const todoItem = employee.todo.find(item => item._id.toString() == req.params.taskId);
+
+       const doneItem = employee.done.find(item => item._id.toString() == req.params.taskId);
+  
+       if (todoItem) {
+
+         employee.todo.id(todoItem._id).remove();
+  
+         employee.save(function(err,updatedTodoItemEmployee){
+
+         if (err) {
+
+            console.log(err);
+
+            const DeleteTodoItemOnSaveMongoDbErrorResponse= new ErrorResponse('500', 'internal error', err);
+
+            res.status(500).send(DeleteTodoItemOnSaveMongoDbErrorResponse.toObject());
+  
+         } else {
+
+            console.log(updatedTodoItemEmployee);
+
+            const DeleteTodoItemSuccessResponse= new BaseResponse('200', 'remove item from the todo list', updatedTodoItemEmployee);
+
+            res.json(DeleteTodoItemSuccessResponse.toObject());
+  
         }
+      })
+  
+       } else if (doneItem) {
+
+        employee.done.id(doneItem._id).remove();
+  
+        employee.save(function(err,updatedDoneItemEmployee){
+
+        if (err) {
+
+           console.log(err);
+
+           const DeleteDoneItemOnSaveMongoDbErrorResponse= new ErrorResponse('500', 'internal error', err);
+
+           res.status(500).send(DeleteDoneItemOnSaveMongoDbErrorResponse.toObject());
+  
+        } else {
+
+           console.log(updatedDoneItemEmployee);
+
+           const DeleteDoneItemSuccessResponse= new BaseResponse('200', 'remove item from the done list', updatedDoneItemEmployee);
+
+           res.json(DeleteDoneItemSuccessResponse.toObject());
+  
+       }
      })
+       } else {
+
+         console.log('invalid task id');
+
+         const DeleteTaskNotFoundResponse= new BaseResponse('200', 'unable to locate the requested task', null);
+
+         res.json(DeleteTaskNotFoundResponse.toObject());
+  
+       }
+     }
+   })
+    } catch (e) {
+
+       console.log(e);
+
+       const deleteTaskErrorCatchResponse= new ErrorResponse('500', 'internal error', e.message);
+
+       res.status(500).send(deleteTaskErrorCatchResponse.toObject());
+  
+      }
+    })
+  
 
 
 
@@ -214,15 +258,17 @@ class EmployeeResponse {
 
 
 
+    
 
 
 
 
-
-     /*
-    *
-    * CreateTask here 
-    * */
+/**
+ * ==============================================================================
+ *  API : CreateTask here
+ * 
+ * ==============================================================================
+**/
 
 
 
@@ -234,9 +280,10 @@ router.post('/:empId/tasks', async(req, res) => {
             if (err) {
                 console.log(err);
 
-                const CreateTaskCatchErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+                const CreateTaskMongoDbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
 
-                res.status(500).send(CreateTaskCatchErrorResponse.toObject());
+                res.status(500).send(CreateTaskMongoDbErrorResponse.toObject());
+
              } else { 
 
                  console.log(employee);
@@ -266,12 +313,13 @@ router.post('/:empId/tasks', async(req, res) => {
                         const CreateTaskResponse = new BaseResponse('200', 'Successful entry', updatedEmployee);
 
                         res.json(CreateTaskResponse.toObject());
-                    }
+            }
 
-                     })
+     })
 
              }
-        })
+     })
+
 
     } catch (e) {
         console.log(e);
@@ -294,10 +342,12 @@ router.post('/:empId/tasks', async(req, res) => {
 
 
 
-     /*
-    *
-    * updatedTask here 
-    * */
+/**
+ * ==============================================================================
+ *  API : UpdateTask here
+ * 
+ * ==============================================================================
+**/  
 
     router.put('/:empId/tasks', async(req, res) => {
         try {
@@ -307,14 +357,14 @@ router.post('/:empId/tasks', async(req, res) => {
                 if (err) {
                     console.log(err);
 
-                    const updateTaskMongoDbErrorReponse = new ErrorResponse('500','Internal server error', err);
+                    const updateTaskMongoDbErrorResponse = new ErrorResponse('500','Internal server error', err);
 
-                    res.status(500).send(updateTaskMongoDbErrorReponse.toObject());
+                    res.status(500).send(updateTaskMongoDbErrorResponse.toObject());
 
                 } else {
 
                     console.log(employee);
-                    // employee object will be updated
+                    // employee object will be updated here
             
                    employee.set({
                      todo: req.body.todo,
@@ -329,15 +379,17 @@ router.post('/:empId/tasks', async(req, res) => {
                             const updateTaskOnSaveMongoDbErrorResponse = new ErrorResponse('500', 'internal server error', err);
 
                             res.status(500).send(updateTaskOnSaveMongoDbErrorResponse.toObject());
+
+
                         } else {
                             console.log(updatedEmployee);
 
                             const updateTaskOnSaveSuccessResponse = new BaseResponse('200', 'Update successful', updatedEmployee);
 
                             res.json(updateTaskOnSaveSuccessResponse.toObject());
-                        }
+                }
 
-                    })
+            })
                 }
             })
 
