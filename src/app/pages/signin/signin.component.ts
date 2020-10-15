@@ -32,7 +32,9 @@ export class SigninComponent implements OnInit {
   login() {
     const empId = this.form.controls.empId.value;
 
-    this.http.get('/api/employee/' + empId).subscribe(res => {
+    // make sure the HTTP.get URL is matched correctly
+
+    this.http.get('/api/employees/' + empId).subscribe(res => {
       if (res) {
         this.cookieService.set('session_user', empId, 1);
         this.router.navigate(['/']);
@@ -45,7 +47,9 @@ export class SigninComponent implements OnInit {
   logout() {
     const empId = this.form.controls.empId.value;
 
-    this.http.get('/api/employee/' + empId).subscribe(res => {
+
+    // make sure the HTTP.get URL is matched correctly
+    this.http.get('/api/employees/' + empId).subscribe(res => {
       if (res) {
         this.cookieService.set('session_user', empId, 1);
         this.router.navigate(['/']);

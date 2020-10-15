@@ -79,13 +79,13 @@ mongoose.connect(conn, {
 
 /**
  * ==============================================================================
- * API                      API                               API
+ * API goes here 
  * 
  * ==============================================================================
 **/
 
 
- app.use('/api/employee', EmployeeApi);   // this is the URL  localhost:3000/api/employees   
+ app.use('/api/employees', EmployeeApi);   // this is the URL  localhost:3000/api/employees   
 
 
 
