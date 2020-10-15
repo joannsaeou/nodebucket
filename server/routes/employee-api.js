@@ -4,16 +4,7 @@
 * Author: Professor Krasso
 * Date: 29 September 2020
 * Modified: Joann Saeou
-* Description: this is the api routing for employee 
-
-*  (Node.js API )
-* findEmployeeById
- * FindAllTasks
- * CreateTask
- * UpdateTask
- * DeleteTask
-*
-
+* Description: this is the api routing for employee connecting  with the Node js
 --> */
 
 

@@ -1,4 +1,4 @@
-/* <!--
+/*  <!--
 * Title: signin.component.ts
 * Author: Professor Krasso
 * Date: 25 September 2020
@@ -21,7 +21,7 @@ export class SigninComponent implements OnInit {
   form: FormGroup;
   error: string;
 
-  constructor(private router: Router, private cookieService: CookieService, private fb: FormBuilder, private http: HttpClient ) { }
+  constructor(private router: Router,  private fb: FormBuilder, private http: HttpClient, private cookieService: CookieService, ) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -35,28 +35,32 @@ export class SigninComponent implements OnInit {
     // make sure the HTTP.get URL is matched correctly
 
     this.http.get('/api/employees/' + empId).subscribe(res => {
+
       if (res) {
+
         this.cookieService.set('session_user', empId, 1);
         this.router.navigate(['/']);
+
       } else {
         this.error = 'The employee Id is invalid, please try again';
-      }
+  }
     });
   }
-
-  logout() {
-    const empId = this.form.controls.empId.value;
-
-
-    // make sure the HTTP.get URL is matched correctly
-    this.http.get('/api/employees/' + empId).subscribe(res => {
-      if (res) {
-        this.cookieService.set('session_user', empId, 1);
-        this.router.navigate(['/']);
-      } else {
-        this.error = 'logging out is invalid';
-      }
-    });
-  }
-
 }
+
+//   logout() {
+//     const empId = this.form.controls.empId.value;
+
+
+//     // make sure the HTTP.get URL is matched correctly
+//     this.http.get('/api/employees/' + empId).subscribe(res => {
+//       if (res) {
+//         this.cookieService.set('session_user', empId, 1);
+//         this.router.navigate(['/']);
+//       } else {
+//         this.error = 'logging out is invalid';
+//       }
+//     });
+//   }
+
+// }
