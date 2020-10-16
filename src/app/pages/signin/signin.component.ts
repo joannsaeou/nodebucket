@@ -34,10 +34,11 @@ login() {
   const empId = this.form.controls['empId'].value;
 
   this.http.get('/api/employees/' + empId).subscribe(res => {
+    this.router.navigate(['/']);
+
       if (res) {
-        this.cookieService.set('sessionEmployee', session.employee, empId, 1, '/') ;
-        this.router.navigate(['/']);
-      }  else {
+        this.cookieService.set('session_user', empId, 1);
+        }  else {
         this.error = 'The employee ID is invalid. please try again.';
       }
   });
