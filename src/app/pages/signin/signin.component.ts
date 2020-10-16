@@ -5,11 +5,11 @@
 * Modified: Joann Saeou
 * Description: sign in ts  component -->  */
 
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-signin',
@@ -21,46 +21,27 @@ export class SigninComponent implements OnInit {
   form: FormGroup;
   error: string;
 
-  constructor(private router: Router,  private fb: FormBuilder, private http: HttpClient, private cookieService: CookieService, ) { }
+  constructor(private router: Router, private cookieService: CookieService, private fb: FormBuilder, private http: HttpClient ) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
+
       empId: [null, Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])]
     });
   }
 
-  login() {
-    const empId = this.form.controls.empId.value;
+login() {
+  const empId = this.form.controls['empId'].value;
 
-    // make sure the HTTP.get URL is matched correctly
-
-    this.http.get('/api/employees/' + empId).subscribe(res => {
-
+  this.http.get('/api/employees/' + empId).subscribe(res => {
       if (res) {
-
         this.cookieService.set('session_user', empId, 1);
         this.router.navigate(['/']);
-
-      } else {
-        this.error = 'The employee Id is invalid, please try again';
-  }
-    });
-  }
+      }  else {
+        this.error = 'The employee ID is invalid. please try again.';
+      }
+  });
 }
 
-//   logout() {
-//     const empId = this.form.controls.empId.value;
-
-
-//     // make sure the HTTP.get URL is matched correctly
-//     this.http.get('/api/employees/' + empId).subscribe(res => {
-//       if (res) {
-//         this.cookieService.set('session_user', empId, 1);
-//         this.router.navigate(['/']);
-//       } else {
-//         this.error = 'logging out is invalid';
-//       }
-//     });
-//   }
-
-// }
+// tslint:disable-next-line:eofline
+}

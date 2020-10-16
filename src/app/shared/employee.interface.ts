@@ -13,4 +13,7 @@ export interface Employee {
     empId: string;
     todo: Item[];
     done: Item[];
+
+
+// tslint:disable-next-line: eofline
 }

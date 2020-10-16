@@ -30,12 +30,13 @@ export class BaseLayoutComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.cookieService.deleteAll();
+
   }
 
 
   logOut() {
     this.cookieService.deleteAll();
     this.router.navigate(['/session/signin']);
+
   }
 }
