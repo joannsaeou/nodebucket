@@ -35,7 +35,7 @@ login() {
 
   this.http.get('/api/employees/' + empId).subscribe(res => {
       if (res) {
-        this.cookieService.set('session_user', empId, 1);
+        this.cookieService.set('sessionEmployee', session.employee, empId, 1, '/') ;
         this.router.navigate(['/']);
       }  else {
         this.error = 'The employee ID is invalid. please try again.';
@@ -43,5 +43,4 @@ login() {
   });
 }
 
-// tslint:disable-next-line:eofline
 }
