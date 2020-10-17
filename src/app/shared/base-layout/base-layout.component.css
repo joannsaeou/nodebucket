@@ -9,9 +9,9 @@
   margin-right: 45px;
   justify-content: flex-end;
   align-content: flex-end;
- text-align: end;
+ text-align: right;
+ clear: left;
   float:right;
-  flex-wrap: wrap;
   font-size: 24px;
   font-weight: lighter;
   color: red;
