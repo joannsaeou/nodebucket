@@ -16,11 +16,18 @@
 
 .navbar-container {
   padding: 55px;
+ 
 }
 
 .navbar-link {
   font-size: 24px;
   font-weight: lighter;
+  align-items: stretch;
+  padding: 30px;
+  clear: both;
+  display: inline-flex;
+  text-align: 40px center;
+  justify-content: space-between;
 }
 
 .main-content {
