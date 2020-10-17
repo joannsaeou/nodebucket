@@ -355,29 +355,29 @@ router.post('/:empId/tasks', async(req, res) => {
                 } else {
 
                     console.log(employee);
-                    // employee object will be updated here
+                    // employee object will be updated 
             
                    employee.set({
                      todo: req.body.todo,
                      done: req.body.done
                    });
 
-                    employee.save(function(err, updateEmployee) {
+                    employee.save(function(err, updatedEmployee) {
                         if (err) {
                             
                             console.log(err);
 
-                            const updateTaskOnSaveMongoDbErrorResponse = new ErrorResponse('500', 'internal server error', err);
+                            const UpdateTaskOnSaveMongoDbErrorResponse = new ErrorResponse('500', 'internal server error', err);
 
-                            res.status(500).send(updateTaskOnSaveMongoDbErrorResponse.toObject());
+                            res.status(500).send(UpdateTaskOnSaveMongoDbErrorResponse.toObject());
 
 
                         } else {
-                            console.log(updateEmployee);
+                            console.log(updatedEmployee);
 
-                            const updateTaskOnSaveSuccessResponse = new BaseResponse('200', 'Update successful', updateEmployee);
+                            const UpdateTaskOnSaveSuccessResponse = new BaseResponse('200', 'Update successful', updatedEmployee);
 
-                            res.json(updateTaskOnSaveSuccessResponse.toObject());
+                            res.json(UpdateTaskOnSaveSuccessResponse.toObject());
                 }
 
             })
