@@ -97,6 +97,6 @@ mongoose.connect(conn, {
  * 
  * ==============================================================================
 **/
-http.createServer(app).listen(port, function() {
-  console.log(`Application started and listening on port: ${port}`)
+http.createServer(app).listen(PORT, function() {
+  console.log(`Application started and listening on port: ${PORT}`)
 });  // end http create server function
