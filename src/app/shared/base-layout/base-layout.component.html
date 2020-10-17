@@ -19,16 +19,32 @@
         <!-- logo -->
 
 
-        <button class="logo" routerLink="/" mat-button> nodebucket </button>
+        <button class="logo" mat-icon-button> 
+          
+          <mat-icon>assignment</mat-icon>   Nodebucket
+                                         <!-- to change the logo icon -->
 
-        <button class="navbar-link" routerLink="../../pages/home/" mat-button>Home</button>
-
-        <button class="navbar-link" routerLink="/pages/aboutus" mat-button>About-Us</button>
-
-        <button class="navbar-link" routerLink="../../pages/not-found/" mat-button>Not-Found</button>
+      </button>  
 
 
-        <button class="navbar-link" align="right" float="right" mat-raised-button color="warn" (click)="logOut()">logout </button>
+
+
+
+        <button class="navbar-link" routerLink="../../pages/home/" mat-button>
+          <mat-icon>face
+          </mat-icon>  Home</button>
+
+        <button class="navbar-link" routerLink="/pages/aboutus" mat-button>
+          <mat-icon>favorite</mat-icon>About-Us
+        </button>
+
+        <button class="navbar-link" routerLink="../../pages/not-found/" mat-button>
+          <mat-icon> favorite_border</mat-icon>
+          Not-Found</button>
+
+
+        <button class="navbar-link" align="right" float="right" mat-raised-button color="warn" (click)="logOut()">
+          <mat-icon>login</mat-icon>logout </button>
 
       </div>
 

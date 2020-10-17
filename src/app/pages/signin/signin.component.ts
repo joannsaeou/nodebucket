@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-signin',
