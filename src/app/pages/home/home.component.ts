@@ -25,8 +25,8 @@ export class HomeComponent implements OnInit {
 
   //  tasks: any
 
-  todo: Array<Item>;
-  done: Array<Item>;
+  todo: Item[];
+  done: Item[];
   employee: Employee;  // this will remove the red squiggly line on line 41
 
   empId: string;
@@ -68,19 +68,18 @@ export class HomeComponent implements OnInit {
 
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      this.updateTaskList(this.empId, this.todo, this.done);
 
       console.log(`Reordered the existing list of task items`);
 
-      this.updateTaskList(this.empId, this.todo, this.done);
 
     } else {
       transferArrayItem(event.previousContainer.data,
       event.container.data, event.previousIndex, event.currentIndex);
 
+      this.updateTaskList(this.empId, this.todo, this.done);
 
       console.log(`Moved task item to the container`);
-
-      this.updateTaskList(this.empId, this.todo, this.done);
 
     }
   }
@@ -136,7 +135,7 @@ export class HomeComponent implements OnInit {
         this.todo = this.employee.todo;
         this.done = this.employee.done;
 
-      });
+      })
     }
 
   }

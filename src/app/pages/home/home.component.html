@@ -135,12 +135,13 @@
                             <div fxFlex fxLayoutAlign="end">
                                 <!-- to change the button icon -->
                                 <button [matMenuTriggerFor]="doneOptions" class="task-options-menu" mat-icon-button>
-                                    <mat-icon>more_horiz</mat-icon>
+                                    <mat-icon>cancel_schedule_send
+                                    </mat-icon>
                                 </button>
 
                                 <!-- to delete task -->
                                 <mat-menu #doneOptions="matMenu" x-position="before">
-                                    <button (click)="deleteTask(item._id)" mat-menu-item>Delete</button>
+                                    <button (click)="deleteTask(item._id)" mat-menu-item>Remove</button>
                                 </mat-menu>
                             </div>
 
