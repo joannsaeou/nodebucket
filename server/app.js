@@ -42,7 +42,7 @@ app.use('/', express.static(path.join(__dirname, '../dist/nodebucket')));
 
 
 
-const PORT = process.env.PORT || 3000; // server port
+const PORT = process.env.PORT || '3000'; // server port
 
 
 
