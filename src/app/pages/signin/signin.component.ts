@@ -20,6 +20,7 @@ export class SigninComponent implements OnInit {
 
   form: FormGroup;
   error: string;
+  private cookieValue: string;
 
   constructor(private router: Router, private cookieService: CookieService, private fb: FormBuilder, private http: HttpClient ) { }
 
@@ -34,11 +35,11 @@ login() {
   const empId = this.form.controls['empId'].value;
 
   this.http.get('/api/employees/' + empId).subscribe(res => {
-    this.router.navigate(['/']);
-
       if (res) {
         this.cookieService.set('session_user', empId, 1);
-        }  else {
+        this.cookieValue = this.cookieService.get('session_user');
+        this.router.navigate(['/']);
+      }  else {
         this.error = 'The employee ID is invalid. please try again.';
       }
   });
