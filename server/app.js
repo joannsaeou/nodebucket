@@ -49,8 +49,9 @@ const port = process.env.PORT || 3000; // server port
 
 
 // TODO: This line will need to be replaced with your actual database connection string
+// 
 
-const conn = 'mongodb+srv://nodebucket450:LlyvH7juPF4ILHvO@buwebdev-cluster-1.2eedp.mongodb.net/nodebucket?retryWrites=true&w=majority';
+const conn = 'mongodb+srv://nodebucket450:EQnUZjpVwZV2zitj@buwebdev-cluster-1.2eedp.mongodb.net/nodebucket?retryWrites=true&w=majority';
 
 /**
  * ==============================================================================
